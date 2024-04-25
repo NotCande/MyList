@@ -36,5 +36,9 @@ public class Main {
         linkedList.remove("index 0");
         System.out.println("Nuevo indice 0: " + linkedList.get(0));
         System.out.println("Nuevo indice de 'Hola': " + linkedList.indexOf("Hola"));
+        linkedList.add("prueba 1");
+        linkedList.add("objetivo");
+        linkedList.add("prueba 2");
+        System.out.println(linkedList.indexOf("objetivo"));
     }
 }

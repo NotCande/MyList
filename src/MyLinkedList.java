@@ -40,7 +40,6 @@ public class MyLinkedList implements MyList{
     }
 
     @Override
-
     public boolean contains(String s) {
         if (head == null)
             return false;
