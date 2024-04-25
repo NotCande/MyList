@@ -7,29 +7,24 @@ public class MyLinkedList implements MyList{
             return 0;
         }
 
-        if (head.getNext() == null) {
-            return 1;
-        }
+        StringNode element = head;
 
-        StringNode element = head.getNext();
-        int i;
-
-        for (i = 1; element.getNext() != null; i++) {
+        int i = 0;
+        while (element.getNext() != null){
             element = element.getNext();
+            i ++;
         }
 
-        return i;
+        return i + 1;
     }
 
     @Override
     public String get(int index) {
-        if (head == null) {
+        if (index < 0 || index >= size()) {
             return null;
         }
 
-        StringNode element = head.getNext();
-
-        if (index < 0 && index >= size()) {
+        if (head == null) {
             return null;
         }
 
@@ -37,6 +32,7 @@ public class MyLinkedList implements MyList{
             return head.getValue();
         }
 
+        StringNode element = head.getNext();
         for (int i = 1; i < index; i++) {
             element = element.getNext();
         }
@@ -84,7 +80,7 @@ public class MyLinkedList implements MyList{
             head = head.getNext();
 
         StringNode element = head.getNext();
-        for (int i = 1; i < size(); i++) {
+        for (int i = 1; i < size() - 1; i++) {
             if (element.getNext().getValue().equals(s)){
                 element.setNext(element.getNext().getNext());
             }
@@ -116,20 +112,29 @@ public class MyLinkedList implements MyList{
 
     @Override
     public int indexOf(String s) {
-        return 0;
+        if (head == null)
+            return 0;
+        if (head.getNext() == null)
+            return 0;
+
+        int i = 1;
+        StringNode element = head.getNext();
+        while (!element.getValue().equals(s)){
+            element = element.getNext();
+            i ++;
+        }
+        return i;
     }
 
-    public StringNode getLast() {
-        StringNode element;
+    private StringNode getLast() {
+        if (head == null)
+            return null;
 
-        if(head.getNext() != null) {
-            element = head.getNext();
-        } else
-            return head;
-
+        StringNode element = head;
         while (element.getNext() != null) {
             element = element.getNext();
         }
+
         return element;
     }
 }
