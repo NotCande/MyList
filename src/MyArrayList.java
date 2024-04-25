@@ -16,6 +16,17 @@ public class MyArrayList implements MyList{
     }
 
     @Override
+    public boolean contains(String s) {
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i].equals(s)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    @Override
     public boolean add(String s) {
         String[] elements;
         if (arr[0] == null) {
