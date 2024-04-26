@@ -9,13 +9,13 @@ public class MyLinkedList implements MyList{
 
         StringNode element = head;
 
-        int i = 0;
+        int i = 1;
         while (element.getNext() != null){
             element = element.getNext();
             i ++;
         }
 
-        return i + 1;
+        return i;
     }
 
     @Override
