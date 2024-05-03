@@ -1,9 +1,9 @@
-interface MyList {
+interface MyList<T> {
     int size();
-    String get(int index);
-    boolean contains(String s);
-    boolean add(String s);
-    boolean remove(String s);
+    Object get(int index);
+    boolean contains(T s);
+    boolean add(T s);
+    boolean remove(T s);
     boolean remove(int index);
-    int indexOf(String s);
+    int indexOf(T s);
 }

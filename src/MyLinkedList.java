@@ -1,5 +1,5 @@
-public class MyLinkedList implements MyList{
-    StringNode head;
+public class MyLinkedList<T> implements MyList<T>{
+    Node<T> head;
 
     @Override
     public int size() {
@@ -7,7 +7,7 @@ public class MyLinkedList implements MyList{
             return 0;
         }
 
-        StringNode element = head;
+        Node<T> element = head;
 
         int i = 1;
         while (element.getNext() != null){
@@ -19,7 +19,7 @@ public class MyLinkedList implements MyList{
     }
 
     @Override
-    public String get(int index) {
+    public Object get(int index) {
         if (index < 0 || index >= size()) {
             return null;
         }
@@ -32,7 +32,7 @@ public class MyLinkedList implements MyList{
             return head.getValue();
         }
 
-        StringNode element = head.getNext();
+        Node<T> element = head.getNext();
         for (int i = 1; i < index; i++) {
             element = element.getNext();
         }
@@ -40,14 +40,14 @@ public class MyLinkedList implements MyList{
     }
 
     @Override
-    public boolean contains(String s) {
+    public boolean contains(T s) {
         if (head == null)
             return false;
 
         if (head.getValue().equals(s))
             return true;
 
-        StringNode element = head.getNext();
+        Node<T> element = head.getNext();
 
         for (int i = 1; i < size(); i++) {
             if (element.getValue().equals(s))
@@ -59,8 +59,8 @@ public class MyLinkedList implements MyList{
     }
 
     @Override
-    public boolean add(String s) {
-        StringNode next = new StringNode(s, null);
+    public boolean add(T s) {
+        Node<T> next = new Node<>(s, null);
 
         if(head == null) {
             head = next;
@@ -71,14 +71,14 @@ public class MyLinkedList implements MyList{
     }
 
     @Override
-    public boolean remove(String s) {
+    public boolean remove(T s) {
         if (head == null)
             return false;
 
         if (head.getValue().equals(s))
             head = head.getNext();
 
-        StringNode element = head.getNext();
+        Node<T> element = head.getNext();
         for (int i = 1; i < size() - 1; i++) {
             if (element.getNext().getValue().equals(s)){
                 element.setNext(element.getNext().getNext());
@@ -97,7 +97,7 @@ public class MyLinkedList implements MyList{
         if (index == 0)
             head = head.getNext();
 
-        StringNode element = head.getNext();
+        Node<T> element = head.getNext();
 
         for (int i = 1; i <= index; i++) {
             if (i == index) {
@@ -110,14 +110,14 @@ public class MyLinkedList implements MyList{
     }
 
     @Override
-    public int indexOf(String s) {
+    public int indexOf(T s) {
         if (head == null)
             return 0;
         if (head.getNext() == null)
             return 0;
 
         int i = 1;
-        StringNode element = head.getNext();
+        Node<T> element = head.getNext();
         while (!element.getValue().equals(s)){
             element = element.getNext();
             i ++;
@@ -125,11 +125,11 @@ public class MyLinkedList implements MyList{
         return i;
     }
 
-    private StringNode getLast() {
+    private Node getLast() {
         if (head == null)
             return null;
 
-        StringNode element = head;
+        Node<T> element = head;
         while (element.getNext() != null) {
             element = element.getNext();
         }

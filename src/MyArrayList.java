@@ -1,8 +1,8 @@
-public class MyArrayList implements MyList{
-    private String [] arr;
+public class MyArrayList<T> implements MyList<T>{
+    private Object[] arr;
 
     public MyArrayList() {
-        arr = new String[1];
+        arr = new Object[1];
     }
 
     @Override
@@ -11,12 +11,12 @@ public class MyArrayList implements MyList{
     }
 
     @Override
-    public String get(int index) {
+    public Object get(int index) {
         return (arr.length > index && index >= 0) ? arr[index] : null;
     }
 
     @Override
-    public boolean contains(String s) {
+    public boolean contains(T s) {
         for (int i = 0; i < arr.length; i++) {
             if (arr[i].equals(s)) {
                 return true;
@@ -27,13 +27,13 @@ public class MyArrayList implements MyList{
     }
 
     @Override
-    public boolean add(String s) {
-        String[] elements;
+    public boolean add(T s) {
+        Object[] elements;
         if (arr[0] == null) {
             arr[0] = s;
         } else {
             int newSize = size() + 1;
-            elements = new String[newSize];
+            elements = new Object[newSize];
 
             for (int i = 0; i < arr.length; i++) {
                 elements[i] = arr[i];
@@ -46,9 +46,9 @@ public class MyArrayList implements MyList{
     }
 
     @Override
-    public boolean remove(String s) {
+    public boolean remove(T s) {
         int newSize = size() - 1, elementIndex = indexOf(s);
-        String[] elements = new String[newSize];
+        Object[] elements = new Object[newSize];
 
         for (int i = 0; i < elementIndex; i++) {
             elements[i] = arr[i];
@@ -66,7 +66,7 @@ public class MyArrayList implements MyList{
 
     @Override
     public boolean remove(int index) {
-        String[] elements = new String[arr.length - 1];
+        Object[] elements = new Object[arr.length - 1];
 
         for (int i = 0; i < elements.length; i++) {
             if (i >= index)
@@ -80,7 +80,7 @@ public class MyArrayList implements MyList{
     }
 
     @Override
-    public int indexOf(String s) {
+    public int indexOf(T s) {
         int i = 0;
 
         while (!arr[i].equals(s)) {

@@ -1,7 +1,7 @@
 public class Main {
     public static void main(String[] args) {
-        MyList arr = new MyArrayList();
-        MyList linkedList = new MyLinkedList();
+        MyList<String> arr = new MyArrayList<>();
+        MyList<String> linkedList = new MyLinkedList<>();
 
         arr.add("Tuki");
         arr.add("Hola");
